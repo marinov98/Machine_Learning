@@ -1,3 +1,9 @@
+# output
+a.out
+
+# vscode
+.vscode/
+
 # Prerequisites
 *.d
 
