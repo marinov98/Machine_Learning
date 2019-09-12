@@ -1,0 +1,309 @@
+Euclidean Distance: 3.41174
+Label of current Index : A
+
+
+Euclidean Distance: 3.46266
+Label of current Index : C
+
+
+Euclidean Distance: 3.07083
+Label of current Index : A
+
+
+Euclidean Distance: 3.72022
+Label of current Index : B
+
+
+Euclidean Distance: 1.33417
+Label of current Index : C
+
+
+Euclidean Distance: 1.70294
+Label of current Index : A
+
+
+Euclidean Distance: 0.943398
+Label of current Index : B
+
+
+Euclidean Distance: 1.56205
+Label of current Index : C
+
+
+Euclidean Distance: 1.51658
+Label of current Index : A
+
+
+Euclidean Distance: 3.81969
+Label of current Index : B
+
+
+Euclidean Distance: 3.67423
+Label of current Index : C
+
+
+Euclidean Distance: 1.41774
+Label of current Index : A
+
+
+Euclidean Distance: 8.88482
+Label of current Index : B
+
+
+Euclidean Distance: 1.55242
+Label of current Index : C
+
+
+Euclidean Distance: 0
+Label of current Index : X
+
+
+Example Point 5 2.8 4.6 0.7 X
+SORTED DISTANCES: 
+0
+0.943398
+1.33417
+1.41774
+1.51658
+1.55242
+1.56205
+1.70294
+3.07083
+3.41174
+3.46266
+3.67423
+3.72022
+3.81969
+8.88482
+Manhattan Distance: 4.6
+Label of current Index : A
+
+
+Manhattan Distance: 5.1
+Label of current Index : C
+
+
+Manhattan Distance: 4.1
+Label of current Index : A
+
+
+Manhattan Distance: 5.6
+Label of current Index : B
+
+
+Manhattan Distance: 2.6
+Label of current Index : C
+
+
+Manhattan Distance: 2.4
+Label of current Index : A
+
+
+Manhattan Distance: 1.5
+Label of current Index : B
+
+
+Manhattan Distance: 2.6
+Label of current Index : C
+
+
+Manhattan Distance: 2.4
+Label of current Index : A
+
+
+Manhattan Distance: 7.1
+Label of current Index : B
+
+
+Manhattan Distance: 6.4
+Label of current Index : C
+
+
+Manhattan Distance: 2.7
+Label of current Index : A
+
+
+Manhattan Distance: 12
+Label of current Index : B
+
+
+Manhattan Distance: 2.5
+Label of current Index : C
+
+
+Manhattan Distance: 0
+Label of current Index : X
+
+
+Example Point 5 2.8 4.6 0.7 X
+SORTED DISTANCES: 
+0
+1.5
+2.4
+2.4
+2.5
+2.6
+2.6
+2.7
+4.1
+4.6
+5.1
+5.6
+6.4
+7.1
+12
+Euclidean Distance: 0.679566
+Label of current Index : A
+
+
+Euclidean Distance: 0.674618
+Label of current Index : C
+
+
+Euclidean Distance: 0.574627
+Label of current Index : A
+
+
+Euclidean Distance: 0.958081
+Label of current Index : B
+
+
+Euclidean Distance: 0.294582
+Label of current Index : C
+
+
+Euclidean Distance: 0.289271
+Label of current Index : A
+
+
+Euclidean Distance: 0.147727
+Label of current Index : B
+
+
+Euclidean Distance: 0.324658
+Label of current Index : C
+
+
+Euclidean Distance: 0.314693
+Label of current Index : A
+
+
+Euclidean Distance: 0.727956
+Label of current Index : B
+
+
+Euclidean Distance: 0.63402
+Label of current Index : C
+
+
+Euclidean Distance: 0.326855
+Label of current Index : A
+
+
+Euclidean Distance: 1.03074
+Label of current Index : B
+
+
+Euclidean Distance: 0.307193
+Label of current Index : C
+
+
+Euclidean Distance: 0
+Label of current Index : X
+
+
+Example Point 0.509091 0.25 0.611111 0.0652174 X
+SORTED DISTANCES: 
+0
+0.147727
+0.289271
+0.294582
+0.307193
+0.314693
+0.324658
+0.326855
+0.574627
+0.63402
+0.674618
+0.679566
+0.727956
+0.958081
+1.03074
+Manhattan Distance: 0.975307
+Label of current Index : A
+
+
+Manhattan Distance: 1.04273
+Label of current Index : C
+
+
+Manhattan Distance: 0.789449
+Label of current Index : A
+
+
+Manhattan Distance: 1.40781
+Label of current Index : B
+
+
+Manhattan Distance: 0.548298
+Label of current Index : C
+
+
+Manhattan Distance: 0.40135
+Label of current Index : A
+
+
+Manhattan Distance: 0.229527
+Label of current Index : B
+
+
+Manhattan Distance: 0.539302
+Label of current Index : C
+
+
+Manhattan Distance: 0.51308
+Label of current Index : A
+
+
+Manhattan Distance: 1.37617
+Label of current Index : B
+
+
+Manhattan Distance: 1.10001
+Label of current Index : C
+
+
+Manhattan Distance: 0.581979
+Label of current Index : A
+
+
+Manhattan Distance: 1.65061
+Label of current Index : B
+
+
+Manhattan Distance: 0.500395
+Label of current Index : C
+
+
+Manhattan Distance: 0
+Label of current Index : X
+
+
+Example Point 0.509091 0.25 0.611111 0.0652174 X
+SORTED DISTANCES: 
+0
+0.229527
+0.40135
+0.500395
+0.51308
+0.539302
+0.548298
+0.581979
+0.789449
+0.975307
+1.04273
+1.10001
+1.37617
+1.40781
+1.65061
+
