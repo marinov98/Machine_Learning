@@ -243,6 +243,34 @@ std::vector<Data> normalizeData(std::vector<Data> arr) {
 	return normalizedSet;
 }
 
+char classifyKthNearestNeighbors(std::vector<Result> dataSet, int k) {
+	if (dataSet.size() < k + 1)
+		throw std::underflow_error("dataSet is too small!");
+
+	int maxCountA = 0;
+	int maxCountB = 0;
+	int maxCountC = 0;
+
+	// K + 1 Because the first point will always be the example point
+	for (int i = 0; i < k + 1; i++) {
+		if (dataSet[i].label == 'A')
+			maxCountA++;
+		else if (dataSet[i].label == 'B')
+			maxCountB++;
+		else if (dataSet[i].label == 'C')
+			maxCountC++;
+	}
+
+	int targetClassification = std::max({maxCountA, maxCountB, maxCountC});
+
+	if (targetClassification == maxCountA)
+		return 'A';
+	else if (targetClassification == maxCountB)
+		return 'B';
+	else if (targetClassification == maxCountC)
+		return 'C';
+}
+
 void sortAndDisplayData(std::vector<Result> dataSet) {
 	std::sort(dataSet.begin(), dataSet.end(),
 	          [&](Result a, Result b) { return a.distance < b.distance; });
@@ -251,6 +279,16 @@ void sortAndDisplayData(std::vector<Result> dataSet) {
 
 	for (const auto& distance : dataSet)
 		std::cout << distance << '\n';
+
+	// Classify sorted data
+
+	std::cout << "\nCLASSIFICATIONS:\n";
+	// 1th index instead of 0th since the first one is the example point
+	std::cout << "Knn classification for k = 1: " << dataSet[1].label << '\n';
+	std::cout << "Knn classification for k = 4: " << classifyKthNearestNeighbors(dataSet, 4)
+	          << '\n';
+	std::cout << "Knn classification for k = 6: " << classifyKthNearestNeighbors(dataSet, 6)
+	          << '\n';
 }
 
 int main() {
@@ -276,7 +314,7 @@ int main() {
 	std::cout << "\nCHEBYSHEV distances" << '\n';
 	sortAndDisplayData(findChebyshevDistances(arr, newExample));
 
-	std::cout << "\n NORMALIZED CHEBYSHEV distances" << '\n';
+	std::cout << "\nNORMALIZED CHEBYSHEV distances" << '\n';
 	sortAndDisplayData(
 	    findChebyshevDistances(normalizedData, normalizedData[normalizedData.size() - 1]));
 

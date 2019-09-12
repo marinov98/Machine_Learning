@@ -79,6 +79,107 @@ Distance: 1.40781 --> B
 Distance: 1.65061 --> B
 
 CHEBYSHEV distances
+EUCLIDEAN distances
+
+Example Point 5 2.8 4.6 0.7 X
+SORTED DISTANCES: 
+Distance: 0 --> X
+Distance: 0.943398 --> B
+Distance: 1.33417 --> C
+Distance: 1.41774 --> A
+Distance: 1.51658 --> A
+Distance: 1.55242 --> C
+Distance: 1.56205 --> C
+Distance: 1.70294 --> A
+Distance: 3.07083 --> A
+Distance: 3.41174 --> A
+Distance: 3.46266 --> C
+Distance: 3.67423 --> C
+Distance: 3.72022 --> B
+Distance: 3.81969 --> B
+Distance: 8.88482 --> B
+
+CLASSIFICATIONS:
+Knn classification for k = 1: B
+Knn classification for k = 4: A
+Knn classification for k = 6: C
+
+NORMALIZED EUCLIDEAN distances
+
+Example Point 0.509091 0.25 0.611111 0.0652174 X
+SORTED DISTANCES: 
+Distance: 0 --> X
+Distance: 0.147727 --> B
+Distance: 0.289271 --> A
+Distance: 0.294582 --> C
+Distance: 0.307193 --> C
+Distance: 0.314693 --> A
+Distance: 0.324658 --> C
+Distance: 0.326855 --> A
+Distance: 0.574627 --> A
+Distance: 0.63402 --> C
+Distance: 0.674618 --> C
+Distance: 0.679566 --> A
+Distance: 0.727956 --> B
+Distance: 0.958081 --> B
+Distance: 1.03074 --> B
+
+CLASSIFICATIONS:
+Knn classification for k = 1: B
+Knn classification for k = 4: C
+Knn classification for k = 6: C
+
+MANHATTAN distances
+
+Example Point 5 2.8 4.6 0.7 X
+SORTED DISTANCES: 
+Distance: 0 --> X
+Distance: 1.5 --> B
+Distance: 2.4 --> A
+Distance: 2.4 --> A
+Distance: 2.5 --> C
+Distance: 2.6 --> C
+Distance: 2.6 --> C
+Distance: 2.7 --> A
+Distance: 4.1 --> A
+Distance: 4.6 --> A
+Distance: 5.1 --> C
+Distance: 5.6 --> B
+Distance: 6.4 --> C
+Distance: 7.1 --> B
+Distance: 12 --> B
+
+CLASSIFICATIONS:
+Knn classification for k = 1: B
+Knn classification for k = 4: A
+Knn classification for k = 6: C
+
+NORMALIZED MANHATTAN distances
+
+Example Point 0.509091 0.25 0.611111 0.0652174 X
+SORTED DISTANCES: 
+Distance: 0 --> X
+Distance: 0.229527 --> B
+Distance: 0.40135 --> A
+Distance: 0.500395 --> C
+Distance: 0.51308 --> A
+Distance: 0.539302 --> C
+Distance: 0.548298 --> C
+Distance: 0.581979 --> A
+Distance: 0.789449 --> A
+Distance: 0.975307 --> A
+Distance: 1.04273 --> C
+Distance: 1.10001 --> C
+Distance: 1.37617 --> B
+Distance: 1.40781 --> B
+Distance: 1.65061 --> B
+
+CLASSIFICATIONS:
+Knn classification for k = 1: B
+Knn classification for k = 4: A
+Knn classification for k = 6: C
+
+CHEBYSHEV distances
 
 SORTED DISTANCES: 
 Distance: 2.22507e-308 --> X
@@ -97,7 +198,12 @@ Distance: 3.3 --> A
 Distance: 3.3 --> C
 Distance: 8.6 --> B
 
- NORMALIZED CHEBYSHEV distances
+CLASSIFICATIONS:
+Knn classification for k = 1: B
+Knn classification for k = 4: C
+Knn classification for k = 6: C
+
+NORMALIZED CHEBYSHEV distances
 
 SORTED DISTANCES: 
 Distance: 2.22507e-308 --> X
@@ -116,6 +222,10 @@ Distance: 0.611111 --> C
 Distance: 0.75 --> B
 Distance: 0.934783 --> B
 
+CLASSIFICATIONS:
+Knn classification for k = 1: B
+Knn classification for k = 4: C
+Knn classification for k = 6: C
 
 
 
