@@ -66,12 +66,31 @@ double calculateEuclideanDistance(Data arrPoint, Data newExample) {
 }
 
 double calculateManhattanDistance(Data arrPoint, Data newExample) {
-	double squaredA = std::abs((arrPoint.a - newExample.a));
-	double squaredB = std::abs((arrPoint.b - newExample.b));
-	double squaredC = std::abs((arrPoint.c - newExample.c));
-	double squaredD = std::abs((arrPoint.d - newExample.d));
+	double absA = std::abs((arrPoint.a - newExample.a));
+	double absB = std::abs((arrPoint.b - newExample.b));
+	double absC = std::abs((arrPoint.c - newExample.c));
+	double absD = std::abs((arrPoint.d - newExample.d));
 
-	return (squaredA + squaredB + squaredC + squaredD);
+	return (absA + absB + absC + absD);
+}
+
+double calculateChebyshevDistance(Data arrPoint, Data newExample) {
+	double max = std::numeric_limits<double>::min();
+
+	double absA = std::abs((arrPoint.a - newExample.a));
+
+	double absB = std::abs((arrPoint.b - newExample.b));
+	double absC = std::abs((arrPoint.c - newExample.c));
+	double absD = std::abs((arrPoint.d - newExample.d));
+
+	double arr[4] = {absA, absB, absC, absD};
+
+	for (int i = 0; i < 4; i++) {
+		if (arr[i] > max)
+			max = arr[i];
+	}
+
+	return max;
 }
 
 std::vector<Result> findEuclideanDistances(std::vector<Data> dataArr, Data newExample) {
@@ -99,6 +118,20 @@ std::vector<Result> findManhantanDistances(std::vector<Data> dataArr, Data newEx
 	}
 
 	std::cout << "\nExample Point " << newExample;
+
+	return data;
+}
+
+std::vector<Result> findChebyshevDistances(std::vector<Data> dataArr, Data newExample) {
+	std::vector<Result> data;
+
+	data.reserve(dataArr.size());
+
+	for (const Data& dataPoint : dataArr) {
+		double cDistance = calculateChebyshevDistance(dataPoint, newExample);
+
+		data.emplace_back(Result{cDistance, dataPoint.label});
+	}
 
 	return data;
 }
@@ -216,9 +249,8 @@ void sortAndDisplayData(std::vector<Result> dataSet) {
 
 	std::cout << "\nSORTED DISTANCES: \n";
 
-	for (const auto& distance : dataSet) {
+	for (const auto& distance : dataSet)
 		std::cout << distance << '\n';
-	}
 }
 
 int main() {
@@ -230,16 +262,23 @@ int main() {
 
 	sortAndDisplayData(findEuclideanDistances(arr, newExample));
 
-	std::cout << "\nMANHATTAN distances" << '\n';
-	sortAndDisplayData(findManhantanDistances(arr, newExample));
-
 	std::cout << "\nNORMALIZED EUCLIDEAN distances" << '\n';
 	sortAndDisplayData(
 	    findEuclideanDistances(normalizedData, normalizedData[normalizedData.size() - 1]));
 
+	std::cout << "\nMANHATTAN distances" << '\n';
+	sortAndDisplayData(findManhantanDistances(arr, newExample));
+
 	std::cout << "\nNORMALIZED MANHATTAN distances" << '\n';
 	sortAndDisplayData(
 	    findManhantanDistances(normalizedData, normalizedData[normalizedData.size() - 1]));
+
+	std::cout << "\nCHEBYSHEV distances" << '\n';
+	sortAndDisplayData(findChebyshevDistances(arr, newExample));
+
+	std::cout << "\n NORMALIZED CHEBYSHEV distances" << '\n';
+	sortAndDisplayData(
+	    findChebyshevDistances(normalizedData, normalizedData[normalizedData.size() - 1]));
 
 	return 0;
 }
