@@ -29,7 +29,7 @@ struct Data {
 	}
 };
 
-// For the distance is calculated
+// For when the distance is calculated
 struct Result {
 	double distance;
 	char label;
