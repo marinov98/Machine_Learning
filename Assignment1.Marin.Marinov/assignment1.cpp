@@ -83,14 +83,7 @@ double calculateChebyshevDistance(Data arrPoint, Data newExample) {
 	double absC = std::abs((arrPoint.c - newExample.c));
 	double absD = std::abs((arrPoint.d - newExample.d));
 
-	double arr[4] = {absA, absB, absC, absD};
-
-	for (int i = 0; i < 4; i++) {
-		if (arr[i] > max)
-			max = arr[i];
-	}
-
-	return max;
+	return std::max({absA, absB, absC, absD});
 }
 
 std::vector<Result> findEuclideanDistances(std::vector<Data> dataArr, Data newExample) {
