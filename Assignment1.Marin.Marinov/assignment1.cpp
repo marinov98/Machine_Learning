@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
@@ -6,6 +5,9 @@
 #include <limits>
 #include <vector>
 
+// NOTE TO SELF: should have written this in js instead :p
+
+// For the each individual point
 struct Data {
 	double a;
 	double b;
@@ -27,6 +29,21 @@ struct Data {
 	}
 };
 
+// For the distance is calculated
+struct Result {
+	double distance;
+	char label;
+
+	Result(double distance_, char label_) : distance(distance_), label(label_) {}
+
+	friend std::ostream& operator<<(std::ostream& out, Result result) {
+		out << "Distance: " << result.distance << " --> " << result.label;
+
+		return out;
+	}
+};
+
+// IMPORTANT: Point Marked classified as 'X' is the new example point
 std::vector<Data> arr = {{5.1, 3.5, 1.3, 0.2, 'A'}, {5.7, 3.4, 1.3, 0.2, 'C'},
                          {4.7, 3.1, 1.6, 0.2, 'A'}, {5.0, 4.6, 1.4, 0.1, 'B'},
                          {5.9, 3.3, 4.0, 1.3, 'C'}, {6.5, 2.7, 4.6, 1.5, 'A'},
@@ -36,51 +53,52 @@ std::vector<Data> arr = {{5.1, 3.5, 1.3, 0.2, 'A'}, {5.7, 3.4, 1.3, 0.2, 'C'},
                          {6.9, 3.2, 5.7, 9.3, 'B'}, {5.6, 2.2, 4.6, 2.0, 'C'},
                          {5.0, 2.8, 4.6, 0.7, 'X'}};
 
-std::vector<double> findEuclideanDistance(std::vector<Data> dataArr, Data newExample) {
-	std::vector<double> data;
-	data.reserve(15);
-	for (int i = 0; i < dataArr.size(); i++) {
-		double squaredA = (dataArr[i].a - newExample.a) * (dataArr[i].a - newExample.a);
-		double squaredB = (dataArr[i].b - newExample.b) * (dataArr[i].b - newExample.b);
-		double squaredC = (dataArr[i].c - newExample.c) * (dataArr[i].c - newExample.c);
-		double squaredD = (dataArr[i].d - newExample.d) * (dataArr[i].d - newExample.d);
+double calculateEuclideanDistance(Data arrPoint, Data newExample) {
+	double squaredA = (arrPoint.a - newExample.a) * (arrPoint.a - newExample.a);
+	double squaredB = (arrPoint.b - newExample.b) * (arrPoint.b - newExample.b);
+	double squaredC = (arrPoint.c - newExample.c) * (arrPoint.c - newExample.c);
+	double squaredD = (arrPoint.d - newExample.d) * (arrPoint.d - newExample.d);
 
-		double total = squaredA + squaredB + squaredC + squaredD;
+	double total = squaredA + squaredB + squaredC + squaredD;
 
-		// Square root and find the euclidean distance
-		double eDistance = std::sqrt(total);
+	// Square root and find the euclidean distance
+	return std::sqrt(total);
+}
 
-		std::cout << "Euclidean Distance: " << eDistance
-		          << "\nLabel of current Index : " << dataArr[i].label << "\n\n\n";
+double calculateManhattanDistance(Data arrPoint, Data newExample) {
+	double squaredA = std::abs((arrPoint.a - newExample.a));
+	double squaredB = std::abs((arrPoint.b - newExample.b));
+	double squaredC = std::abs((arrPoint.c - newExample.c));
+	double squaredD = std::abs((arrPoint.d - newExample.d));
 
-		data.emplace_back(eDistance);
+	return (squaredA + squaredB + squaredC + squaredD);
+}
+
+std::vector<Result> findEuclideanDistances(std::vector<Data> dataArr, Data newExample) {
+	std::vector<Result> data;
+	data.reserve(dataArr.size());
+	for (const Data& dataPoint : dataArr) {
+		double eDistance = calculateEuclideanDistance(dataPoint, newExample);
+
+		// add calculated distance and the label of the current data point
+		data.emplace_back(Result{eDistance, dataPoint.label});
 	}
 
-	std::cout << "Example Point " << newExample;
+	std::cout << "\nExample Point " << newExample;
 
 	return data;
 }
 
-std::vector<double> findManhantanDistance(std::vector<Data> dataArr, Data newExample) {
-	std::vector<double> data;
-	data.reserve(15);
-	for (int i = 0; i < dataArr.size(); i++) {
-		double squaredA = std::abs((dataArr[i].a - newExample.a));
-		double squaredB = std::abs((dataArr[i].b - newExample.b));
-		double squaredC = std::abs((dataArr[i].c - newExample.c));
-		double squaredD = std::abs((dataArr[i].d - newExample.d));
+std::vector<Result> findManhantanDistances(std::vector<Data> dataArr, Data newExample) {
+	std::vector<Result> data;
+	data.reserve(dataArr.size());
+	for (const Data& dataPoint : dataArr) {
+		double mDistance = calculateManhattanDistance(dataPoint, newExample);
 
-		double total = squaredA + squaredB + squaredC + squaredD;
-
-		// Square root and find the euclidean distance
-
-		std::cout << "Manhattan Distance: " << total
-		          << "\nLabel of current Index : " << dataArr[i].label << "\n\n\n";
-
-		data.emplace_back(total);
+		data.emplace_back(Result{mDistance, dataPoint.label});
 	}
 
-	std::cout << "Example Point " << newExample;
+	std::cout << "\nExample Point " << newExample;
 
 	return data;
 }
@@ -192,8 +210,9 @@ std::vector<Data> normalizeData(std::vector<Data> arr) {
 	return normalizedSet;
 }
 
-void sortAndDisplayData(std::vector<double> dataSet) {
-	std::sort(dataSet.begin(), dataSet.end());
+void sortAndDisplayData(std::vector<Result> dataSet) {
+	std::sort(dataSet.begin(), dataSet.end(),
+	          [&](Result a, Result b) { return a.distance < b.distance; });
 
 	std::cout << "\nSORTED DISTANCES: \n";
 
@@ -207,14 +226,20 @@ int main() {
 
 	std::vector<Data> normalizedData = normalizeData(arr);
 
-	sortAndDisplayData(findEuclideanDistance(arr, newExample));
-	sortAndDisplayData(findManhantanDistance(arr, newExample));
+	std::cout << "\nEUCLIDEAN distances" << '\n';
 
-	sortAndDisplayData(
-	    findEuclideanDistance(normalizedData, normalizedData[normalizedData.size() - 1]));
+	sortAndDisplayData(findEuclideanDistances(arr, newExample));
 
+	std::cout << "\nMANHATTAN distances" << '\n';
+	sortAndDisplayData(findManhantanDistances(arr, newExample));
+
+	std::cout << "\nNORMALIZED EUCLIDEAN distances" << '\n';
 	sortAndDisplayData(
-	    findManhantanDistance(normalizedData, normalizedData[normalizedData.size() - 1]));
+	    findEuclideanDistances(normalizedData, normalizedData[normalizedData.size() - 1]));
+
+	std::cout << "\nNORMALIZED MANHATTAN distances" << '\n';
+	sortAndDisplayData(
+	    findManhantanDistances(normalizedData, normalizedData[normalizedData.size() - 1]));
 
 	return 0;
 }
