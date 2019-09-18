@@ -50,7 +50,11 @@ def calculateVariance(dataSet):
 
 
 def calculateTenTosses(dataSet):
-    return 10 * calculateExpectedValue(dataSet)
+    expected = 10 * calculateExpectedValue(dataSet)
+    variance, sdz = calculateVariance(dataSet)
+    sdz = (variance * 10) ** 0.5
+
+    return (expected, variance*10, sdz)
 
 
 def printResults(dataSet):
@@ -58,11 +62,13 @@ def printResults(dataSet):
 
     variance, sd = calculateVariance(dataSet)
 
-    res = calculateTenTosses(dataSet)
+    meanz, variancez, sdz = calculateTenTosses(dataSet)
 
     print("\nMean of discrete random variable: {}".format(mean))
     print("Standard Deviation of discrete random variable: {} \nVariance of discrete random variable: {}".format(sd, variance))
-    print("Sum of expected values: {}".format(res))
+    print("\n10 Independent events Mean: {}".format(meanz))
+    print("10 Independent events Variance: {}".format(variancez))
+    print("10 Independent events Sd: {}".format(sdz))
 
 ##################################
 # Mean, SD, and Variance results:
