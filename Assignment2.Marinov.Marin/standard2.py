@@ -64,13 +64,15 @@ def analyzef1(data):
                 elif (value == "vlow"):
                     vlows += 1
 
-    return {"highCount": highs, "mediumsCount": mediums, "lowsCount": lows, "vlowCount": vlows}
+    total = highs + mediums + lows + vlows
+
+    return {"highCount": highs, "mediumsCount": mediums, "lowsCount": lows, "vlowCount": vlows, "all": total}
 
 
 def analyzef2(data):
     vhighs = 0
     highs = 0
-    medium = 0
+    mediums = 0
     lows = 0
 
     for item in data:
@@ -81,11 +83,13 @@ def analyzef2(data):
                 elif (value == "high"):
                     highs += 1
                 elif (value == "medium"):
-                    medium += 1
+                    mediums += 1
                 elif (value == "low"):
                     lows += 1
 
-    return {"vhighCount": vhighs, "highsCount": highs, "lowsCount": lows, "mediumCount": medium}
+    total = highs + mediums + lows + vhighs
+
+    return {"vhighCount": vhighs, "highsCount": highs, "lowsCount": lows, "mediumCount": mediums, "all": total}
 
 
 def analyzef3(data):
@@ -103,7 +107,9 @@ def analyzef3(data):
                 elif (value == 1):
                     oneCount += 1
 
-    return {"4": fourCount, "3": threeCount, "1": oneCount}
+    total = fourCount + threeCount + oneCount
+
+    return {"4": fourCount, "3": threeCount, "1": oneCount, "all": total}
 
 
 def analyzef4(data):
@@ -121,7 +127,9 @@ def analyzef4(data):
                 elif (value == 1):
                     oneCount += 1
 
-    return {"6": sixCount, "4": fourCount, "1": oneCount}
+    total = sixCount + fourCount + oneCount
+
+    return {"6": sixCount, "4": fourCount, "1": oneCount, "all": total}
 
 
 def analyzef5(data):
@@ -139,7 +147,9 @@ def analyzef5(data):
                 elif (value == "small"):
                     smalls += 1
 
-    return {"big": bigs, "medium": mediums, "small": smalls}
+    total = bigs + mediums + smalls
+
+    return {"big": bigs, "medium": mediums, "small": smalls, "all": total}
 
 
 def analyzef6(data):
@@ -157,7 +167,9 @@ def analyzef6(data):
                 elif (value == "small"):
                     smalls += 1
 
-    return {"big": bigs, "medium": mediums, "small": smalls}
+    total = bigs + mediums + smalls
+
+    return {"big": bigs, "medium": mediums, "small": smalls, "all": total}
 
 #####################
 # Output
