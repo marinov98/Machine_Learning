@@ -1,4 +1,5 @@
-import math
+from math import log
+from scipy.stats import entropy
 
 # Define the data structure
 dataSet = [
@@ -121,21 +122,48 @@ def analyzef6(dataset):
     return dataf6
 
 
+def getCounts(analyzedDataset):
+    countedArr = []
+
+    for key, value in analyzedDataset.items():
+        countedArr.append({"Q": value.count("Q"), "R": value.count("R"), "S": value.count("S"), "P": value.count("P"), "total": (value.count("Q") +
+                                                                                                                                 value.count("R") + value.count("S") + value.count("P"))})
+        print("Classification: {}".format(key))
+        print("Q counts: {}".format(value.count("Q")))
+        print("R counts: {}".format(value.count("R")))
+        print("S counts: {}".format(value.count("S")))
+        print("P counts: {}".format(value.count("P")))
+        print("Total: {}".format(value.count("Q") +
+                                 value.count("R") + value.count("S") + value.count("P")))
+
+    return countedArr
+
+
+test = [1/2, 1/2]
+
+
+def calculateEntropy(countedArr):
+
+    return entropy(test, None, 2)
+
+
 def printData(dataSet):
     for key, value in dataSet.items():
         print("Classification: {}".format(key))
         print(value)
 
 
-print(" FEATURE 1:")
-printData(analyzef1(dataSet))
-print("\n FEATURE 2:")
-printData(analyzef2(dataSet))
-print("\n FEATURE 3:")
-printData(analyzef3(dataSet))
-print("\n FEATURE 4:")
-printData(analyzef4(dataSet))
-print("\n FEATURE 5:")
-printData(analyzef5(dataSet))
-print("\n FEATURE 6:")
-printData(analyzef6(dataSet))
+# print(" FEATURE 1:")
+# printData(analyzef1(dataSet))
+# print("\n FEATURE 2:")
+# printData(analyzef2(dataSet))
+# print("\n FEATURE 3:")
+# printData(analyzef3(dataSet))
+# print("\n FEATURE 4:")
+# printData(analyzef4(dataSet))
+# print("\n FEATURE 5:")
+# printData(analyzef5(dataSet))
+# print("\n FEATURE 6:")
+# printData(analyzef6(dataSet))
+print(getCounts(analyzef1(dataSet)))
+print(calculateEntropy(test))
