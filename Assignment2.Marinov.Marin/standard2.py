@@ -176,6 +176,38 @@ def getAverage(countsArr, entropies):
     return total
 
 
+def showGains():
+    original = getOriginal(dataSet)
+
+    statsf1 = getCounts(analyzef1(dataSet))
+    statsf2 = getCounts(analyzef2(dataSet))
+    statsf3 = getCounts(analyzef3(dataSet))
+    statsf4 = getCounts(analyzef4(dataSet))
+    statsf5 = getCounts(analyzef5(dataSet))
+    statsf6 = getCounts(analyzef6(dataSet))
+
+    entropiesf1 = entropies(statsf1)
+    entropiesf2 = entropies(statsf2)
+    entropiesf3 = entropies(statsf3)
+    entropiesf4 = entropies(statsf4)
+    entropiesf5 = entropies(statsf5)
+    entropiesf6 = entropies(statsf6)
+
+    averagef1 = getAverage(statsf1, entropiesf1)
+    averagef2 = getAverage(statsf2, entropiesf2)
+    averagef3 = getAverage(statsf3, entropiesf3)
+    averagef4 = getAverage(statsf4, entropiesf4)
+    averagef5 = getAverage(statsf5, entropiesf5)
+    averagef6 = getAverage(statsf6, entropiesf6)
+
+    print("Gain(f1): {}".format(original - averagef1))
+    print("Gain(f2): {}".format(original - averagef2))
+    print("Gain(f3): {}".format(original - averagef3))
+    print("Gain(f4): {}".format(original - averagef4))
+    print("Gain(f5): {}".format(original - averagef5))
+    print("Gain(f6): {}".format(original - averagef6))
+
+
 def printData(dataSet):
     # the getCounts will return an array of dictionaries with the count of how often each class occurs as well as the total
     statsf1 = getCounts(analyzef1(dataSet))
@@ -226,6 +258,9 @@ def printData(dataSet):
     print(entropiesf6)
     print("\nEntropy average for feature 6:")
     print(getAverage(statsf6, entropiesf6))
+
+    print("\n\n Information gains")
+    showGains()
 
 ###############
 # Output
