@@ -34,6 +34,26 @@ dataSet = [
 #####################
 
 
+def getOriginal(dataset):
+    countQ = 0
+    countP = 0
+    countS = 0
+    countR = 0
+    for obj in dataset:
+        if (obj["iClass"] == 'Q'):
+            countQ += 1
+        elif (obj["iClass"] == 'P'):
+            countP += 1
+        elif (obj["iClass"] == 'R'):
+            countR += 1
+        elif (obj["iClass"] == 'S'):
+            countS += 1
+    distribution = [countQ / len(dataset), countP /
+                    len(dataset), countR/len(dataset), countS / len(dataset)]
+
+    return entropy(distribution, None, 2)
+
+
 def analyzef1(dataset):
     dataf1 = {"high": [], "medium": [], "low": [], "vlow": []}
 
@@ -125,45 +145,91 @@ def analyzef6(dataset):
 def getCounts(analyzedDataset):
     countedArr = []
 
-    for key, value in analyzedDataset.items():
+    for value in analyzedDataset.values():
         countedArr.append({"Q": value.count("Q"), "R": value.count("R"), "S": value.count("S"), "P": value.count("P"), "total": (value.count("Q") +
                                                                                                                                  value.count("R") + value.count("S") + value.count("P"))})
-        print("Classification: {}".format(key))
-        print("Q counts: {}".format(value.count("Q")))
-        print("R counts: {}".format(value.count("R")))
-        print("S counts: {}".format(value.count("S")))
-        print("P counts: {}".format(value.count("P")))
-        print("Total: {}".format(value.count("Q") +
-                                 value.count("R") + value.count("S") + value.count("P")))
-
     return countedArr
 
 
-test = [1/2, 1/2]
+def entropies(countedDataset):
+    distribution = []
+    entropies = []
+    for obj in countedDataset:
+        for key, value in obj.items():
+            if (key == "total"):
+                if (len(distribution) > 0):
+                    entropies.append(entropy(distribution, None, 2))
+                    distribution.clear()
+            elif (value > 0):
+                distribution.append(value/obj["total"])
+
+    return entropies
 
 
-def calculateEntropy(countedArr):
+def getAverage(countsArr, entropies):
+    total = 0
+    i = 0
+    for obj in countsArr:
+        total += (obj["total"] / len(dataSet)) * entropies[i]
+        i += 1
 
-    return entropy(test, None, 2)
+    return total
 
 
 def printData(dataSet):
-    for key, value in dataSet.items():
-        print("Classification: {}".format(key))
-        print(value)
+    # the getCounts will return an array of dictionaries with the count of how often each class occurs as well as the total
+    statsf1 = getCounts(analyzef1(dataSet))
+    statsf2 = getCounts(analyzef2(dataSet))
+    statsf3 = getCounts(analyzef3(dataSet))
+    statsf4 = getCounts(analyzef4(dataSet))
+    statsf5 = getCounts(analyzef5(dataSet))
+    statsf6 = getCounts(analyzef6(dataSet))
+
+    entropiesf1 = entropies(statsf1)
+    entropiesf2 = entropies(statsf2)
+    entropiesf3 = entropies(statsf3)
+    entropiesf4 = entropies(statsf4)
+    entropiesf5 = entropies(statsf5)
+    entropiesf6 = entropies(statsf6)
+
+    print("Original Entropy")
+    print(getOriginal(dataSet))
+    print("\n\n")
+
+    # for each feature the entropies function will return an array of all the entropies for that feature
+    print("Entropies when splitting on feature 1:\n")
+    print(entropiesf1)
+    print("\nEntropy average for feature 1:")
+    print(getAverage(statsf1, entropiesf1))
+    print("\n\n")
+    print("Entropies when splitting on feature 2:\n")
+    print(entropiesf2)
+    print("\nEntropy average for feature 2:")
+    print(getAverage(statsf2, entropiesf2))
+    print("\n\n")
+    print("Entropies when splitting on feature 3:\n")
+    print(entropiesf3)
+    print("\nEntropy average for feature 3:")
+    print(getAverage(statsf3, entropiesf3))
+    print("\n\n")
+    print("Entropies when splitting on feature 4:\n")
+    print(entropiesf4)
+    print("\nEntropy average for feature 4:")
+    print(getAverage(statsf4, entropiesf4))
+    print("\n\n")
+    print("Entropies when splitting on feature 5:\n")
+    print(entropiesf5)
+    print("\nEntropy average for feature 5:")
+    print(getAverage(statsf5, entropiesf5))
+    print("\n\n")
+    print("Entropies when splitting on feature 6:\n")
+    print(entropiesf6)
+    print("\nEntropy average for feature 6:")
+    print(getAverage(statsf6, entropiesf6))
+
+###############
+# Output
+###############
 
 
-# print(" FEATURE 1:")
-# printData(analyzef1(dataSet))
-# print("\n FEATURE 2:")
-# printData(analyzef2(dataSet))
-# print("\n FEATURE 3:")
-# printData(analyzef3(dataSet))
-# print("\n FEATURE 4:")
-# printData(analyzef4(dataSet))
-# print("\n FEATURE 5:")
-# printData(analyzef5(dataSet))
-# print("\n FEATURE 6:")
-# printData(analyzef6(dataSet))
-print(getCounts(analyzef1(dataSet)))
-print(calculateEntropy(test))
+printData(dataSet)
