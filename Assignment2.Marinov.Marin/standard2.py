@@ -224,9 +224,9 @@ def printData(dataSet):
     entropiesf5 = entropies(statsf5)
     entropiesf6 = entropies(statsf6)
 
-    print("Original Entropy")
+    print("\nOriginal Entropy")
     print(getOriginal(dataSet))
-    print("\n\n")
+    print("\n")
 
     # for each feature the entropies function will return an array of all the entropies for that feature
     print("Entropies when splitting on feature 1:\n")
