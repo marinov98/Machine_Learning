@@ -1,3 +1,5 @@
+import math
+
 # Define the data structure
 dataSet = [
     {"f1": "high", "f2": "vhigh", "f3": 3, "f4": 4,
@@ -31,190 +33,109 @@ dataSet = [
 #####################
 
 
-def getFilteredSpace(dataset, className):
-    filteredArr = []
-    for item in dataSet:
-        for value in item.values():
-            if (value == className):
-                filteredArr.append(item)
-    return filteredArr
+def analyzef1(dataset):
+    dataf1 = {"high": [], "medium": [], "low": [], "vlow": []}
+
+    for item in dataset:
+        if (item["f1"] == "high"):
+            dataf1["high"].append(item["iClass"])
+        elif (item["f1"] == "medium"):
+            dataf1["medium"].append(item["iClass"])
+        elif (item["f1"] == "low"):
+            dataf1["low"].append(item["iClass"])
+        elif (item["f1"] == "vlow"):
+            dataf1["vlow"].append(item["iClass"])
+
+    return dataf1
 
 
-def printFilteredSpace(space):
-    for instance in space:
-        print("\n")
-        print(instance)
+def analyzef2(dataset):
+    dataf2 = {"vhigh": [], "high": [], "medium": [], "low": []}
+
+    for item in dataset:
+        if (item["f2"] == "vhigh"):
+            dataf2["vhigh"].append(item["iClass"])
+        elif (item["f2"] == "high"):
+            dataf2["high"].append(item["iClass"])
+        elif (item["f2"] == "medium"):
+            dataf2["medium"].append(item["iClass"])
+        elif (item["f2"] == "low"):
+            dataf2["low"].append(item["iClass"])
+
+    return dataf2
 
 
-def analyzef1(data):
-    highs = 0
-    mediums = 0
-    lows = 0
-    vlows = 0
+def analyzef3(dataset):
+    dataf3 = {"4": [], "3": [], "1": []}
 
-    for item in data:
-        for key, value in item.items():
-            if (key == 'f1'):
-                if (value == "high"):
-                    highs += 1
-                elif (value == "medium"):
-                    mediums += 1
-                elif (value == "low"):
-                    lows += 1
-                elif (value == "vlow"):
-                    vlows += 1
+    for item in dataset:
+        if (item["f3"] == 4):
+            dataf3["4"].append(item["iClass"])
+        elif (item["f3"] == 3):
+            dataf3["3"].append(item["iClass"])
+        elif (item["f3"] == 1):
+            dataf3["1"].append(item["iClass"])
 
-    total = highs + mediums + lows + vlows
-
-    return {"highCount": highs, "mediumsCount": mediums, "lowsCount": lows, "vlowCount": vlows, "all": total}
+    return dataf3
 
 
-def analyzef2(data):
-    vhighs = 0
-    highs = 0
-    mediums = 0
-    lows = 0
+def analyzef4(dataset):
+    dataf4 = {"6": [], "4": [], "1": []}
 
-    for item in data:
-        for key, value in item.items():
-            if (key == 'f1'):
-                if (value == "vhigh"):
-                    vhighs += 1
-                elif (value == "high"):
-                    highs += 1
-                elif (value == "medium"):
-                    mediums += 1
-                elif (value == "low"):
-                    lows += 1
+    for item in dataset:
+        if (item["f4"] == 6):
+            dataf4["6"].append(item["iClass"])
+        elif (item["f4"] == 4):
+            dataf4["4"].append(item["iClass"])
+        elif (item["f4"] == 1):
+            dataf4["1"].append(item["iClass"])
 
-    total = highs + mediums + lows + vhighs
-
-    return {"vhighCount": vhighs, "highsCount": highs, "lowsCount": lows, "mediumCount": mediums, "all": total}
+    return dataf4
 
 
-def analyzef3(data):
-    threeCount = 0
-    fourCount = 0
-    oneCount = 0
+def analyzef5(dataset):
+    dataf5 = {"big": [], "medium": [], "small": []}
 
-    for item in data:
-        for key, value in item.items():
-            if (key == "f3"):
-                if (value == 4):
-                    fourCount += 1
-                elif (value == 3):
-                    threeCount += 1
-                elif (value == 1):
-                    oneCount += 1
+    for item in dataset:
+        if (item["f5"] == "big"):
+            dataf5["big"].append(item["iClass"])
+        elif (item["f5"] == "medium"):
+            dataf5["medium"].append(item["iClass"])
+        elif (item["f5"] == "small"):
+            dataf5["small"].append(item["iClass"])
 
-    total = fourCount + threeCount + oneCount
-
-    return {"4": fourCount, "3": threeCount, "1": oneCount, "all": total}
+    return dataf5
 
 
-def analyzef4(data):
-    sixCount = 0
-    fourCount = 0
-    oneCount = 0
+def analyzef6(dataset):
+    dataf6 = {"high": [], "medium": [], "low": []}
 
-    for item in data:
-        for key, value in item.items():
-            if (key == "f4"):
-                if (value == 6):
-                    sixCount += 1
-                elif (value == 4):
-                    fourCount += 1
-                elif (value == 1):
-                    oneCount += 1
+    for item in dataset:
+        if (item["f6"] == "high"):
+            dataf6["high"].append(item["iClass"])
+        elif (item["f6"] == "medium"):
+            dataf6["medium"].append(item["iClass"])
+        elif (item["f6"] == "low"):
+            dataf6["low"].append(item["iClass"])
 
-    total = sixCount + fourCount + oneCount
-
-    return {"6": sixCount, "4": fourCount, "1": oneCount, "all": total}
+    return dataf6
 
 
-def analyzef5(data):
-    bigs = 0
-    mediums = 0
-    smalls = 0
-
-    for item in data:
-        for key, value in item.items():
-            if (key == "f5"):
-                if (value == "big"):
-                    bigs += 1
-                elif (value == "medium"):
-                    mediums += 1
-                elif (value == "small"):
-                    smalls += 1
-
-    total = bigs + mediums + smalls
-
-    return {"big": bigs, "medium": mediums, "small": smalls, "all": total}
+def printData(dataSet):
+    for key, value in dataSet.items():
+        print("Classification: {}".format(key))
+        print(value)
 
 
-def analyzef6(data):
-    bigs = 0
-    mediums = 0
-    smalls = 0
-
-    for item in data:
-        for key, value in item.items():
-            if (key == "f6"):
-                if (value == "big"):
-                    bigs += 1
-                elif (value == "medium"):
-                    mediums += 1
-                elif (value == "small"):
-                    smalls += 1
-
-    total = bigs + mediums + smalls
-
-    return {"big": bigs, "medium": mediums, "small": smalls, "all": total}
-
-#####################
-# Output
-#####################
-
-
-filteredQ = getFilteredSpace(dataSet, 'Q')
-filteredR = getFilteredSpace(dataSet, 'R')
-filteredS = getFilteredSpace(dataSet, 'S')
-filteredP = getFilteredSpace(dataSet, 'P')
-
-
-print("Classification Q: ")
-printFilteredSpace(filteredQ)
-print("\n")
-print(analyzef1(filteredQ).items())
-print(analyzef2(filteredQ))
-print(analyzef3(filteredQ))
-print(analyzef4(filteredQ))
-print(analyzef5(filteredQ))
-print(analyzef6(filteredQ))
-print("\nClassification R: ")
-printFilteredSpace(filteredR)
-print("\n")
-print(analyzef1(filteredR))
-print(analyzef2(filteredR))
-print(analyzef3(filteredR))
-print(analyzef4(filteredR))
-print(analyzef5(filteredR))
-print(analyzef6(filteredR))
-print("\nClassification S: ")
-printFilteredSpace(filteredS)
-print("\n")
-print(analyzef1(filteredS))
-print(analyzef2(filteredS))
-print(analyzef3(filteredS))
-print(analyzef4(filteredS))
-print(analyzef5(filteredS))
-print(analyzef6(filteredS))
-print("\nClassification P: ")
-printFilteredSpace(filteredP)
-print("\n")
-print(analyzef1(filteredP))
-print(analyzef2(filteredP))
-print(analyzef3(filteredP))
-print(analyzef4(filteredP))
-print(analyzef5(filteredP))
-print(analyzef6(filteredP))
+print(" FEATURE 1:")
+printData(analyzef1(dataSet))
+print("\n FEATURE 2:")
+printData(analyzef2(dataSet))
+print("\n FEATURE 3:")
+printData(analyzef3(dataSet))
+print("\n FEATURE 4:")
+printData(analyzef4(dataSet))
+print("\n FEATURE 5:")
+printData(analyzef5(dataSet))
+print("\n FEATURE 6:")
+printData(analyzef6(dataSet))
