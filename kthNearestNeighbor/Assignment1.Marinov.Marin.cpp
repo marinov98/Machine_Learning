@@ -53,7 +53,7 @@ std::vector<Data> arr = {{5.1, 3.5, 1.3, 0.2, 'A'}, {5.7, 3.4, 1.3, 0.2, 'C'},
                          {6.9, 3.2, 5.7, 9.3, 'B'}, {5.6, 2.2, 4.6, 2.0, 'C'},
                          {5.0, 2.8, 4.6, 0.7, 'X'}};
 
-double calculateEuclideanDistance(Data arrPoint, Data newExample) {
+double calculateEuclideanDistance(const Data& arrPoint, const Data& newExample) {
 	double squaredA = (arrPoint.a - newExample.a) * (arrPoint.a - newExample.a);
 	double squaredB = (arrPoint.b - newExample.b) * (arrPoint.b - newExample.b);
 	double squaredC = (arrPoint.c - newExample.c) * (arrPoint.c - newExample.c);
@@ -65,7 +65,7 @@ double calculateEuclideanDistance(Data arrPoint, Data newExample) {
 	return std::sqrt(total);
 }
 
-double calculateManhattanDistance(Data arrPoint, Data newExample) {
+double calculateManhattanDistance(const Data& arrPoint, const Data& newExample) {
 	double absA = std::abs((arrPoint.a - newExample.a));
 	double absB = std::abs((arrPoint.b - newExample.b));
 	double absC = std::abs((arrPoint.c - newExample.c));
@@ -74,9 +74,7 @@ double calculateManhattanDistance(Data arrPoint, Data newExample) {
 	return (absA + absB + absC + absD);
 }
 
-double calculateChebyshevDistance(Data arrPoint, Data newExample) {
-	double max = std::numeric_limits<double>::min();
-
+double calculateChebyshevDistance(const Data& arrPoint, const Data& newExample) {
 	double absA = std::abs((arrPoint.a - newExample.a));
 
 	double absB = std::abs((arrPoint.b - newExample.b));
@@ -86,7 +84,8 @@ double calculateChebyshevDistance(Data arrPoint, Data newExample) {
 	return std::max({absA, absB, absC, absD});
 }
 
-std::vector<Result> findEuclideanDistances(std::vector<Data> dataArr, Data newExample) {
+std::vector<Result> findEuclideanDistances(const std::vector<Data>& dataArr,
+                                           const Data& newExample) {
 	std::vector<Result> data;
 	data.reserve(dataArr.size());
 	for (const Data& dataPoint : dataArr) {
@@ -101,7 +100,8 @@ std::vector<Result> findEuclideanDistances(std::vector<Data> dataArr, Data newEx
 	return data;
 }
 
-std::vector<Result> findManhantanDistances(std::vector<Data> dataArr, Data newExample) {
+std::vector<Result> findManhantanDistances(const std::vector<Data>& dataArr,
+                                           const Data& newExample) {
 	std::vector<Result> data;
 	data.reserve(dataArr.size());
 	for (const Data& dataPoint : dataArr) {
@@ -115,7 +115,8 @@ std::vector<Result> findManhantanDistances(std::vector<Data> dataArr, Data newEx
 	return data;
 }
 
-std::vector<Result> findChebyshevDistances(std::vector<Data> dataArr, Data newExample) {
+std::vector<Result> findChebyshevDistances(const std::vector<Data>& dataArr,
+                                           const Data& newExample) {
 	std::vector<Result> data;
 
 	data.reserve(dataArr.size());
@@ -129,7 +130,7 @@ std::vector<Result> findChebyshevDistances(std::vector<Data> dataArr, Data newEx
 	return data;
 }
 
-double findMax(std::vector<Data> arr, char field) {
+double findMax(const std::vector<Data>& arr, char field) {
 	double max = std::numeric_limits<double>::min();
 
 	if (field == 'a') {
@@ -164,7 +165,7 @@ double findMax(std::vector<Data> arr, char field) {
 	return max;
 }
 
-double findMin(std::vector<Data> arr, char field) {
+double findMin(const std::vector<Data>& arr, char field) {
 	double min = std::numeric_limits<double>::max();
 
 	if (field == 'a') {
@@ -199,9 +200,9 @@ double findMin(std::vector<Data> arr, char field) {
 	return min;
 }
 
-std::vector<Data> normalizeData(std::vector<Data> arr) {
+std::vector<Data> normalizeData(const std::vector<Data>& arr) {
 	std::vector<Data> normalizedSet;
-	normalizedSet.reserve(15);
+	normalizedSet.reserve(arr.size());
 
 	for (int i = 0; i < arr.size(); i++) {
 		char label = arr[i].label;
@@ -236,7 +237,7 @@ std::vector<Data> normalizeData(std::vector<Data> arr) {
 	return normalizedSet;
 }
 
-char classifyKthNearestNeighbors(std::vector<Result> dataSet, int k) {
+char classifyKthNearestNeighbors(const std::vector<Result>& dataSet, int k) {
 	if (dataSet.size() < k + 1)
 		throw std::underflow_error("dataSet is too small!");
 
