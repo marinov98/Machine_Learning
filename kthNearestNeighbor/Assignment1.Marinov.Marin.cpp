@@ -131,31 +131,34 @@ std::vector<Result> findChebyshevDistances(const std::vector<Data>& dataArr,
 }
 
 double findMax(const std::vector<Data>& arr, char field) {
+	if (arr.empty())
+		throw std::underflow_error("dataset is too small!");
+
 	double max = std::numeric_limits<double>::min();
 
 	if (field == 'a') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].a > max) {
 				max = arr[i].a;
 			}
 		}
 	}
 	else if (field == 'b') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].b > max) {
 				max = arr[i].b;
 			}
 		}
 	}
 	else if (field == 'c') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].c > max) {
 				max = arr[i].c;
 			}
 		}
 	}
 	else if (field == 'd') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].d > max) {
 				max = arr[i].d;
 			}
@@ -166,31 +169,34 @@ double findMax(const std::vector<Data>& arr, char field) {
 }
 
 double findMin(const std::vector<Data>& arr, char field) {
+	if (arr.empty())
+		throw std::underflow_error("dataset is too small!");
+
 	double min = std::numeric_limits<double>::max();
 
 	if (field == 'a') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].a < min) {
 				min = arr[i].a;
 			}
 		}
 	}
 	else if (field == 'b') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].b < min) {
 				min = arr[i].b;
 			}
 		}
 	}
 	else if (field == 'c') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].c < min) {
 				min = arr[i].c;
 			}
 		}
 	}
 	else if (field == 'd') {
-		for (int i = 0; i < arr.size(); i++) {
+		for (size_t i = 0; i < arr.size(); i++) {
 			if (arr[i].d < min) {
 				min = arr[i].d;
 			}
@@ -204,7 +210,7 @@ std::vector<Data> normalizeData(const std::vector<Data>& arr) {
 	std::vector<Data> normalizedSet;
 	normalizedSet.reserve(arr.size());
 
-	for (int i = 0; i < arr.size(); i++) {
+	for (size_t i = 0; i < arr.size(); i++) {
 		char label = arr[i].label;
 		// A
 		double maxA = findMax(arr, 'a');
@@ -239,14 +245,14 @@ std::vector<Data> normalizeData(const std::vector<Data>& arr) {
 
 char classifyKthNearestNeighbors(const std::vector<Result>& dataSet, int k) {
 	if (dataSet.size() < k + 1)
-		throw std::underflow_error("dataSet is too small!");
+		throw std::underflow_error("dataset is too small!");
 
 	int maxCountA = 0;
 	int maxCountB = 0;
 	int maxCountC = 0;
 
 	// K + 1 Because the first point will always be the example point
-	for (int i = 0; i < k + 1; i++) {
+	for (size_t i = 0; i < k + 1; i++) {
 		if (dataSet[i].label == 'A')
 			maxCountA++;
 		else if (dataSet[i].label == 'B')
