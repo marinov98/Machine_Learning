@@ -1,0 +1,15 @@
+Mean of discrete random variable: 12.6
+Standard Deviation of discrete random variable: 14.550601362143077
+Variance of discrete random variable: 211.71999999999997
+
+10 Independent events Mean: 126.0
+10 Independent events Variance: 2117.2
+10 Independent events Sd: 46.01304162952064
+
+Mean of discrete random variable: 21.0
+Standard Deviation of discrete random variable: 21.656407827707714
+Variance of discrete random variable: 468.99999999999994
+
+10 Independent events Mean: 210.0
+10 Independent events Variance: 4689.999999999999
+10 Independent events Sd: 68.48357467305573

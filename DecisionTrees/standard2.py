@@ -225,12 +225,12 @@ def showGains():
     print("Gain(f6): {}".format(original - averagef6))
 
     print("\n\n Using Gain Ratio as Criterion")
-    print("GainRatio (f1): {}".format((original - averagef1) / intrinsicf1))
-    print("GainRatio (f2): {}".format((original - averagef2) / intrinsicf2))
-    print("GainRatio (f3): {}".format((original - averagef3) / intrinsicf3))
-    print("GainRatio (f4): {}".format((original - averagef4) / intrinsicf4))
-    print("GainRatio (f5): {}".format((original - averagef5) / intrinsicf5))
-    print("GainRatio (f6): {}".format((original - averagef6) / intrinsicf6))
+    print("GainRatio(f1): {}".format((original - averagef1) / intrinsicf1))
+    print("GainRatio(f2): {}".format((original - averagef2) / intrinsicf2))
+    print("GainRatio(f3): {}".format((original - averagef3) / intrinsicf3))
+    print("GainRatio(f4): {}".format((original - averagef4) / intrinsicf4))
+    print("GainRatio(f5): {}".format((original - averagef5) / intrinsicf5))
+    print("GainRatio(f6): {}".format((original - averagef6) / intrinsicf6))
 
 
 def printData(dataSet):
