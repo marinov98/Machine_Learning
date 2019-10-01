@@ -11,7 +11,7 @@ dataSet = [
         "f5": "big", "f6": "medium", "iClass": 'S'},
     {"f1": "medium", "f2": "high", "f3": 3, "f4": 4,
         "f5": "big", "f6": "high", "iClass": 'R'},
-    {"f1": "low", "f2": "high", "f3": 4, "f4": 4,
+    {"f1": "low", "f2": "high", "f3": 1, "f4": 4,
         "f5": "small", "f6": "low", "iClass": 'S'},
     {"f1": "low", "f2": "vhigh", "f3": 3, "f4": 1,
         "f5": "big", "f6": "medium", "iClass": 'Q'},
@@ -249,49 +249,49 @@ def printData(dataSet):
     entropiesf5 = entropies(statsf5)
     entropiesf6 = entropies(statsf6)
 
-    print("\nOriginal Entropy")
+    print("\nOriginal Entropy:")
     print(getOriginal(dataSet))
     print("\n")
 
     # for each feature the entropies function will return an array of all the entropies for that feature
     print("Feature 1 stats:\n")
     print(statsf1)
-    print("Entropies when splitting on feature 1:\n")
+    print("\nEntropies when splitting on feature 1:\n")
     print(entropiesf1)
     print("\nEntropy average for feature 1:")
     print(getAverage(statsf1, entropiesf1))
     print("\n\n")
-    print("Feature 2 stats:\n")
+    print("\nFeature 2 stats:\n")
     print(statsf2)
-    print("Entropies when splitting on feature 2:\n")
+    print("\nEntropies when splitting on feature 2:\n")
     print(entropiesf2)
     print("\nEntropy average for feature 2:")
     print(getAverage(statsf2, entropiesf2))
     print("\n\n")
     print("Feature 3 stats:\n")
     print(statsf3)
-    print("Entropies when splitting on feature 3:\n")
+    print("\nEntropies when splitting on feature 3:\n")
     print(entropiesf3)
     print("\nEntropy average for feature 3:")
     print(getAverage(statsf3, entropiesf3))
     print("\n\n")
     print("Feature 4 stats:\n")
     print(statsf4)
-    print("Entropies when splitting on feature 4:\n")
+    print("\nEntropies when splitting on feature 4:\n")
     print(entropiesf4)
     print("\nEntropy average for feature 4:")
     print(getAverage(statsf4, entropiesf4))
     print("\n\n")
     print("Feature 5 stats:\n")
     print(statsf5)
-    print("Entropies when splitting on feature 5:\n")
+    print("\nEntropies when splitting on feature 5:\n")
     print(entropiesf5)
     print("\nEntropy average for feature 5:")
     print(getAverage(statsf5, entropiesf5))
     print("\n\n")
     print("Feature 6 stats:\n")
     print(statsf6)
-    print("Entropies when splitting on feature 6:\n")
+    print("\nEntropies when splitting on feature 6:\n")
     print(entropiesf6)
     print("\nEntropy average for feature 6:")
     print(getAverage(statsf6, entropiesf6))
