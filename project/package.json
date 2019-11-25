@@ -1,0 +1,12 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "ML project preprocessing",
+  "main": "preprocess.js",
+  "author": "Marin P. Marinov",
+  "license": "MIT",
+  "dependencies": {
+    "arff": "^0.1.1",
+    "node-arff": "^1.1.0"
+  }
+}

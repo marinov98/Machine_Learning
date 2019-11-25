@@ -36,3 +36,5 @@ a.out
 *.exe
 *.out
 *.app
+
+node_modules/
