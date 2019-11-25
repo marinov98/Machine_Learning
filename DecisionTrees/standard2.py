@@ -11,7 +11,7 @@ dataSet = [
         "f5": "big", "f6": "medium", "iClass": 'S'},
     {"f1": "medium", "f2": "high", "f3": 3, "f4": 4,
         "f5": "big", "f6": "high", "iClass": 'R'},
-    {"f1": "low", "f2": "high", "f3": 4, "f4": 4,
+    {"f1": "low", "f2": "high", "f3": 1, "f4": 4,
         "f5": "small", "f6": "low", "iClass": 'S'},
     {"f1": "low", "f2": "vhigh", "f3": 3, "f4": 1,
         "f5": "big", "f6": "medium", "iClass": 'Q'},
@@ -87,10 +87,12 @@ def analyzef2(dataset):
 
 
 def analyzef3(dataset):
-    dataf3 = {"4": [], "3": [], "1": []}
+    dataf3 = {"6": [], "4": [], "3": [], "1": []}
 
     for item in dataset:
-        if (item["f3"] == 4):
+        if (item["f3"] == 6):
+            dataf3["6"].append(item["iClass"])
+        elif (item["f3"] == 4):
             dataf3["4"].append(item["iClass"])
         elif (item["f3"] == 3):
             dataf3["3"].append(item["iClass"])
@@ -176,6 +178,14 @@ def getAverage(countsArr, entropies):
     return total
 
 
+def getIntrinsicInfo(stats):
+    info = 0
+    for item in stats:
+        info -= (item["total"] / 12) * log(item["total"] / 12, 2)
+
+    return info
+
+
 def showGains():
     original = getOriginal(dataSet)
 
@@ -185,6 +195,13 @@ def showGains():
     statsf4 = getCounts(analyzef4(dataSet))
     statsf5 = getCounts(analyzef5(dataSet))
     statsf6 = getCounts(analyzef6(dataSet))
+
+    intrinsicf1 = getIntrinsicInfo(statsf1)
+    intrinsicf2 = getIntrinsicInfo(statsf2)
+    intrinsicf3 = getIntrinsicInfo(statsf3)
+    intrinsicf4 = getIntrinsicInfo(statsf4)
+    intrinsicf5 = getIntrinsicInfo(statsf5)
+    intrinsicf6 = getIntrinsicInfo(statsf6)
 
     entropiesf1 = entropies(statsf1)
     entropiesf2 = entropies(statsf2)
@@ -207,6 +224,14 @@ def showGains():
     print("Gain(f5): {}".format(original - averagef5))
     print("Gain(f6): {}".format(original - averagef6))
 
+    print("\n\n Using Gain Ratio as Criterion")
+    print("GainRatio(f1): {}".format((original - averagef1) / intrinsicf1))
+    print("GainRatio(f2): {}".format((original - averagef2) / intrinsicf2))
+    print("GainRatio(f3): {}".format((original - averagef3) / intrinsicf3))
+    print("GainRatio(f4): {}".format((original - averagef4) / intrinsicf4))
+    print("GainRatio(f5): {}".format((original - averagef5) / intrinsicf5))
+    print("GainRatio(f6): {}".format((original - averagef6) / intrinsicf6))
+
 
 def printData(dataSet):
     # the getCounts will return an array of dictionaries with the count of how often each class occurs as well as the total
@@ -224,42 +249,54 @@ def printData(dataSet):
     entropiesf5 = entropies(statsf5)
     entropiesf6 = entropies(statsf6)
 
-    print("\nOriginal Entropy")
+    print("\nOriginal Entropy:")
     print(getOriginal(dataSet))
     print("\n")
 
     # for each feature the entropies function will return an array of all the entropies for that feature
-    print("Entropies when splitting on feature 1:\n")
+    print("Feature 1 stats:\n")
+    print(statsf1)
+    print("\nEntropies when splitting on feature 1:\n")
     print(entropiesf1)
     print("\nEntropy average for feature 1:")
     print(getAverage(statsf1, entropiesf1))
     print("\n\n")
-    print("Entropies when splitting on feature 2:\n")
+    print("\nFeature 2 stats:\n")
+    print(statsf2)
+    print("\nEntropies when splitting on feature 2:\n")
     print(entropiesf2)
     print("\nEntropy average for feature 2:")
     print(getAverage(statsf2, entropiesf2))
     print("\n\n")
-    print("Entropies when splitting on feature 3:\n")
+    print("Feature 3 stats:\n")
+    print(statsf3)
+    print("\nEntropies when splitting on feature 3:\n")
     print(entropiesf3)
     print("\nEntropy average for feature 3:")
     print(getAverage(statsf3, entropiesf3))
     print("\n\n")
-    print("Entropies when splitting on feature 4:\n")
+    print("Feature 4 stats:\n")
+    print(statsf4)
+    print("\nEntropies when splitting on feature 4:\n")
     print(entropiesf4)
     print("\nEntropy average for feature 4:")
     print(getAverage(statsf4, entropiesf4))
     print("\n\n")
-    print("Entropies when splitting on feature 5:\n")
+    print("Feature 5 stats:\n")
+    print(statsf5)
+    print("\nEntropies when splitting on feature 5:\n")
     print(entropiesf5)
     print("\nEntropy average for feature 5:")
     print(getAverage(statsf5, entropiesf5))
     print("\n\n")
-    print("Entropies when splitting on feature 6:\n")
+    print("Feature 6 stats:\n")
+    print(statsf6)
+    print("\nEntropies when splitting on feature 6:\n")
     print(entropiesf6)
     print("\nEntropy average for feature 6:")
     print(getAverage(statsf6, entropiesf6))
 
-    print("\n\n Information gains")
+    print("\n\n Using Entropy Criterion")
     showGains()
 
 ###############

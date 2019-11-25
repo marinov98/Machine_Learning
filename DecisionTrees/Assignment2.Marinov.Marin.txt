@@ -1,0 +1,98 @@
+Original Entropy:
+1.8879185026711327
+
+
+Feature 1 stats:
+
+[{'Q': 1, 'R': 0, 'S': 1, 'P': 0, 'total': 2}, {'Q': 0, 'R': 1, 'S': 1, 'P': 0, 'total': 2}, {'Q': 2, 'R': 0, 'S': 2, 'P': 1, 'total': 5}, {'Q': 0, 'R': 1, 'S': 1, 'P': 1, 'total': 3}]
+
+Entropies when splitting on feature 1:
+
+[1.0, 1.0, 1.5219280948873626, 1.584962500721156]
+
+Entropy average for feature 1:
+1.3637106647166901
+
+
+
+
+Feature 2 stats:
+
+[{'Q': 2, 'R': 0, 'S': 1, 'P': 1, 'total': 4}, {'Q': 0, 'R': 1, 'S': 2, 'P': 0, 'total': 3}, {'Q': 0, 'R': 0, 'S': 1, 'P': 0, 'total': 1}, {'Q': 1, 'R': 1, 'S': 1, 'P': 1, 'total': 4}]
+
+Entropies when splitting on feature 2:
+
+[1.5, 0.9182958340544894, 0.0, 2.0]
+
+Entropy average for feature 2:
+1.396240625180289
+
+
+
+Feature 3 stats:
+
+[{'Q': 0, 'R': 0, 'S': 1, 'P': 0, 'total': 1}, {'Q': 1, 'R': 1, 'S': 1, 'P': 0, 'total': 3}, {'Q': 2, 'R': 1, 'S': 2, 'P': 1, 'total': 6}, {'Q': 0, 'R': 0, 'S': 1, 'P': 1, 'total': 2}]
+
+Entropies when splitting on feature 3:
+
+[0.0, 1.584962500721156, 1.9182958340544896, 1.0]
+
+Entropy average for feature 3:
+1.5220552088742005
+
+
+
+Feature 4 stats:
+
+[{'Q': 1, 'R': 0, 'S': 1, 'P': 1, 'total': 3}, {'Q': 1, 'R': 2, 'S': 2, 'P': 0, 'total': 5}, {'Q': 1, 'R': 0, 'S': 2, 'P': 1, 'total': 4}]
+
+Entropies when splitting on feature 4:
+
+[1.584962500721156, 1.5219280948873626, 1.5]
+
+Entropy average for feature 4:
+1.5303773313833569
+
+
+
+Feature 5 stats:
+
+[{'Q': 1, 'R': 2, 'S': 1, 'P': 1, 'total': 5}, {'Q': 1, 'R': 0, 'S': 1, 'P': 0, 'total': 2}, {'Q': 1, 'R': 0, 'S': 3, 'P': 1, 'total': 5}]
+
+Entropies when splitting on feature 5:
+
+[1.9219280948873625, 1.0, 1.370950594454669]
+
+Entropy average for feature 5:
+1.5386994538925132
+
+
+
+Feature 6 stats:
+
+[{'Q': 1, 'R': 1, 'S': 2, 'P': 1, 'total': 5}, {'Q': 2, 'R': 1, 'S': 1, 'P': 0, 'total': 4}, {'Q': 0, 'R': 0, 'S': 2, 'P': 1, 'total': 3}]
+
+Entropies when splitting on feature 6:
+
+[1.9219280948873625, 1.5, 0.9182958340544894]
+
+Entropy average for feature 6:
+1.5303773313833566
+
+
+ Using Entropy Criterion
+Gain(f1): 0.5242078379544426
+Gain(f2): 0.4916778774908437
+Gain(f3): 0.36586329379693217
+Gain(f4): 0.35754117128777585
+Gain(f5): 0.34921904877861953
+Gain(f6): 0.35754117128777607
+
+
+ Using Gain Ratio as Criterion
+GainRatio(f1): 0.27766444219534053
+GainRatio(f2): 0.26499995354387995
+GainRatio(f3): 0.21153376644925392
+GainRatio(f4): 0.22999136897727915
+GainRatio(f5): 0.2354250135921917
+GainRatio(f6): 0.22999136897727931
