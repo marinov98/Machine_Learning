@@ -1,8 +1,8 @@
 # couresty of Ajani Stewart
 import arff
 
-PATH_TO_DATASET = '/Users/ajani/wekafiles/data/project/'
-DATASET_NAME = 'DatasetAttrDropped2.arff'
+PATH_TO_DATASET = '/home/marin/Desktop/'
+DATASET_NAME = 'Dataset.Marinov.arff'
 PREPROCESSED_DATASET = 'DatasetTEST2.arff'
 
 data = arff.load(open(PATH_TO_DATASET + DATASET_NAME, 'r'))
